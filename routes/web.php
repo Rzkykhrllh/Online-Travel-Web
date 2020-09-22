@@ -35,6 +35,7 @@ Route::prefix("admin")
             ->name("dashboard");
 
         Route::resource('travel-package', 'TravelPackageController');
+        Route::resource('gallery', 'GalleryController');
     });
 
 

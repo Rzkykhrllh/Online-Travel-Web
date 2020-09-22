@@ -17,4 +17,11 @@ class TravelPackage extends Model
     ];
 
     protected $hidden = [];
+
+    // buat relasi database
+    // hasmany -> bisa punya banyak pasangan
+    // model, foreignkey, localkey
+    public function galleries(){
+        return $this->hasMany(Gallery::class, "travel_packages_id", "id");
+    }
 }

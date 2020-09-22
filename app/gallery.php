@@ -11,7 +11,7 @@ class Gallery extends Model
 
     //field yg harus di assign
     protected $fillable = [
-        "travel_package_id", "image"
+        "travel_packages_id", "image"
     ];
 
     protected $hidden = [];
@@ -21,6 +21,6 @@ class Gallery extends Model
     // belongs to bersifat inverse realtio0nship
     // parameter 1: model kelas tujuang, 2:foreign key, 3:local key
     public function travel_package(){
-        return $this->belongsTo(TravelPackage::class, "travel_package_id", "id");
+        return $this->belongsTo(TravelPackage::class, "travel_packages_id", "id");
     }
 }
