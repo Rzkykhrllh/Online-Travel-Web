@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 
 //basicly buat validasi kan ?
-class TransactionRequest extends FormRequest
+class GalleryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,8 @@ class TransactionRequest extends FormRequest
     public function rules()
     {
         return [
-            "transaction_status" => "required|string|in:IN_CART,PENDING,SUCCESS,FAILED,CANCEL"
+            "travel_packages_id" => "required|integer|exists:travel_packages,id",
+            "image" => "required|image"
         ];
     }
 }
