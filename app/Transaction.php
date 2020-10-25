@@ -11,7 +11,7 @@ class Transaction extends Model
 
     //field yg harus di assign
     protected $fillable = [
-        "travel_packages_id", "users_id", "additional_visa", "transaction_total", "transaction_status"
+        "travel_packages_id", "users_id", "additional_visa", "transactional_total", "transactional_status"
     ];
 
     protected $hidden = [];

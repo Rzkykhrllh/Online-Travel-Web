@@ -16,15 +16,62 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', "HomeController@index")
     ->name("home");  //method name itu untuk ngasih nama sebuah route, misal route ini bisa dipanggil home route
     
-Route::get('/detail', "DetailController@index")
+Route::get('/detail/{slug}', "DetailController@index")
     ->name("detail");
 
-Route::get('/checkout', "ChechkoutController@index")
-    ->name("checkout");
-
-Route::get('/checkout/success', "ChechkoutController@success")
-    ->name("chechkout-success");
+//kirim data informasi checkout
+Route::post('/checkout/{id}', "CheckoutController@process")
+    ->name("checkout_process")
+    ->middleware(["auth","verified"]);
     
+//pergi ke halaman checkout
+Route::get('/checkout/{id}', "CheckoutController@index")
+    ->name("checkout")
+    ->middleware(["auth","verified"]);
+
+    
+Route::post('/checkout/create/{detail_id}', "CheckoutController@create")
+    ->name("checkout_create")
+    ->middleware(["auth","verified"]);
+
+
+Route::post('/checkout/remove/{detail_id}', "CheckoutController@remove")
+    ->name("checkout_remove")
+    ->middleware(["auth","verified"]);
+
+    
+Route::post('/checkout/confirm/{detail_id}', "CheckoutController@succes")
+    ->name("checkout_success")
+    ->middleware(["auth","verified"]);
+
+    Route::post('/checkout/{id}', "CheckoutController@process")
+    ->name("checkout_process")
+    ->middleware(["auth","verified"]);
+    
+// //AYAM GORENG ENAK
+// Route::post('/ayam', "CheckoutController@process")
+//     ->name("ayam_process")
+//     ->middleware(["auth","verified"]);
+
+// Route::get('/ayam', "CheckoutController@index")
+//     ->name("ayam")
+//     ->middleware(["auth","verified"]);
+
+    
+// Route::post('/ayam/create/{detail_id}', "CheckoutController@create")
+//     ->name("ayam_create")
+//     ->middleware(["auth","verified"]);
+
+
+// Route::post('/ayam/remove/{detail_id}', "CheckoutController@remove")
+//     ->name("ayam_remove")
+//     ->middleware(["auth","verified"]);
+
+    
+// Route::post('/ayam/confirm/{detail_id}', "CheckoutController@succes")
+//     ->name("ayam_success")
+//     ->middleware(["auth","verified"]);
+
 //jadi, semua route yg ada di dalam grup akan dapat prefix admin
 // entar linknya namaweb/admin/
 Route::prefix("admin")
