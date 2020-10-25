@@ -49,7 +49,7 @@ class CheckoutController extends Controller
         $request->validate([
             "username" => "required|string|exists:users,username",
             "is_visa" => "required|boolean",
-            "doe_passport" => "required"
+            "doe_passport" => ""
         ]);
 
         $data = $request->all();
@@ -60,11 +60,11 @@ class CheckoutController extends Controller
         $transaction = Transaction::with(["travel_package", "user", "details"])->find($id);
 
         if ($request->is_visa){
-            $transaction->transaction_total += 190;
+            $transaction->transactional_total += 190;
             $transaction->additional_visa += 190;
         }
 
-        $transaction->transaction_total += $transaction->travel_package->price;
+        $transaction->transactional_total += $transaction->travel_package->price;
 
         $transaction->save();
 
@@ -79,16 +79,16 @@ class CheckoutController extends Controller
             ->findOrFail($item->transaction_id);
 
         if ($request->is_visa){
-            $transaction->transaction_total -= 190;
+            $transaction->transactional_total -= 190;
             $transaction->additional_visa -= 190;
         }
 
-        $transaction->transaction_total -= $transaction->travel_package->price;
+        $transaction->transactional_total -= $transaction->travel_package->price;
 
         $transaction->save();
         $item->delete();
 
-        return redirect()->route("checkout", $item->transaction_id);
+        return redirect()->route("checkout", $transaction->id);
 
     }
 
@@ -96,11 +96,11 @@ class CheckoutController extends Controller
     public function success(Request $request, $id){
 
         $transaction = Transaction::findOrFail($id);
-        $transaction->transactional_status = "SUCESS";
+        $transaction->transactional_status = "PENDING";
 
         $transaction->save();
 
-        return view("pages.succes");
+        return view("pages.success");
     
     }
 

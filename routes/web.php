@@ -35,42 +35,19 @@ Route::post('/checkout/create/{detail_id}', "CheckoutController@create")
     ->middleware(["auth","verified"]);
 
 
-Route::post('/checkout/remove/{detail_id}', "CheckoutController@remove")
+Route::get('/checkout/remove/{detail_id}', "CheckoutController@remove")
     ->name("checkout_remove")
     ->middleware(["auth","verified"]);
 
     
-Route::post('/checkout/confirm/{detail_id}', "CheckoutController@succes")
+Route::get('/checkout/confirm/{detail_id}', "CheckoutController@success")
     ->name("checkout_success")
     ->middleware(["auth","verified"]);
 
-    Route::post('/checkout/{id}', "CheckoutController@process")
-    ->name("checkout_process")
-    ->middleware(["auth","verified"]);
-    
-// //AYAM GORENG ENAK
-// Route::post('/ayam', "CheckoutController@process")
-//     ->name("ayam_process")
-//     ->middleware(["auth","verified"]);
-
-// Route::get('/ayam', "CheckoutController@index")
-//     ->name("ayam")
-//     ->middleware(["auth","verified"]);
-
-    
-// Route::post('/ayam/create/{detail_id}', "CheckoutController@create")
-//     ->name("ayam_create")
-//     ->middleware(["auth","verified"]);
-
-
-// Route::post('/ayam/remove/{detail_id}', "CheckoutController@remove")
-//     ->name("ayam_remove")
-//     ->middleware(["auth","verified"]);
-
-    
-// Route::post('/ayam/confirm/{detail_id}', "CheckoutController@succes")
-//     ->name("ayam_success")
-//     ->middleware(["auth","verified"]);
+Route::post('/checkout/{id}', "CheckoutController@process")
+->name("checkout_process")
+->middleware(["auth","verified"]);
+ 
 
 //jadi, semua route yg ada di dalam grup akan dapat prefix admin
 // entar linknya namaweb/admin/
