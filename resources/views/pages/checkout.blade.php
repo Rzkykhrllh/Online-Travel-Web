@@ -37,7 +37,7 @@
                             @endif
 
                             <h1>Whos is Going ?</h1>
-                            <p>Trip to</p>
+                            <p>Trip to {{$item->travel_package->title}}, {{$item->travel_package->location}}</p>
                             <div class="attendee">
                                 <table class="table table-responsive-sm text-center">
                                     <thead>
@@ -68,7 +68,7 @@
                                                 </td>
                                                 
                                                 <td class="align-middle">
-                                                    <a href="{{ route('checkout_remove', $detail->id)}}">
+                                                    <a href="{{ route('checkout_remove', $detail->id)}}" >
                                                         <img src="{{ url('frontend/images/ic_remove.png') }}">
                                                     </a>
                                                 </td>
@@ -89,12 +89,13 @@
                                 $item->id)}}">
                                 @csrf
                                     <!-- Sr-only itu buat teman2 tunanetra, jadi screenya convert jadi suara -->
-                                    <label for="Username" class="sr-only">Name</label>
+                                    <label for="username" class="sr-only">Name</label>
                                     <input
+                                        required
                                         type="text"
                                         class="form-control mb-2 mr-sm-2"
-                                        id="Username"
-                                        name="Username"
+                                        id="username"
+                                        name="username"
                                         placeholder="Username"
                                         />
 
@@ -129,7 +130,7 @@
                                         <input 
                                             type="text" 
                                             class="form-control datepicker"
-                                            id="doePassport" 
+                                            id="doe_passport" 
                                             name="doe_passport" 
                                             placeholder="DOE Passport"/>
                                     
@@ -215,7 +216,9 @@
                         </div>
                         
                         <div class="join-container">
-                            <a href="{{ url('/checkout_success', $item->id) }}" class="btn btn-block btn-join-now mt-3 py-2">
+                            <a href="{{ route('checkout_success', $item->id) }}" 
+                                class="btn btn-block btn-join-now mt-3 py-2"
+                                >
                                 I Have Made Payment
                             </a>
                         </div>
