@@ -14,8 +14,12 @@
                     <div class="col p-0">
                         <nav>
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item">Paket Travel</li>
-                                <li class="breadcrumb-item">Details</li>
+                                <li class="breadcrumb-item">
+                                    <a href="{{ route('home')}}" class="breadcrumb-item" style="color: #071c4D">Paket Travel</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="{{ url('/detail', $item->travel_package->slug) }}" class="breadcrumb-item" style="color: #071c4D">Details</a>
+                                </li>
                                 <li class="breadcrumb-item active">Checkout</li>
                             </ol>
                         </nav>

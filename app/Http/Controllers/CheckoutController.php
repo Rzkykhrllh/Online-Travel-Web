@@ -49,7 +49,7 @@ class CheckoutController extends Controller
         $request->validate([
             "username" => "required|string|exists:users,username",
             "is_visa" => "required|boolean",
-            "doe_passport" => ""
+            "doe_passport" => "required|date"
         ]);
 
         $data = $request->all();

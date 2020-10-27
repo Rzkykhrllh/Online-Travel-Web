@@ -13,9 +13,13 @@
                 <div class="row">
                     <div class="col p-0">
                         <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">Paket Travel</li>
-                                <li class="breadcrumb-item active">Details</li>
+                            <ol class="breadcrumb"> 
+                                <li class="breadcrumb-item">
+                                <a href="{{ route('home')}}" class="breadcrumb-item" style="color: #071c4D">Paket Travel</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    <a href="#xzoom-default" class="breadcrumb-item active">Details</a>
+                                </li>
                             </ol>
                         </nav>
 

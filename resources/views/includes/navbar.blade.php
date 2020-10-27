@@ -20,7 +20,7 @@
                 </li>
                 
                 <li class="nav-item mx-md-2">
-                    <a href="#" class="nav-link">Paket Travel</a>
+                    <a href="#popular" class="nav-link">Paket Travel</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -34,7 +34,7 @@
                     </div>
                 </li>
                 <li class="nav-item mx-md-2 ">
-                    <a href="#" class="nav-link">Testimoni</a>
+                    <a href="#testimonialHeading" class="nav-link">Testimoni</a>
                 </li>
 
             </ul>
